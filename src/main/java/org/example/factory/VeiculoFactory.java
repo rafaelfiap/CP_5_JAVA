@@ -1,6 +1,5 @@
 package org.example.factory;
 
-
 import org.example.model.*;
 import java.time.Year;
 
@@ -13,7 +12,7 @@ import java.time.Year;
  * sendo ajustado para diferentes tipos de veículos.
  *
  * @since 1.0
- * @version 1.1
+ * @version 1.2
  */
 public class VeiculoFactory {
 
@@ -37,176 +36,345 @@ public class VeiculoFactory {
         // Escolha do tipo de veículo a ser criado com base no parâmetro 'tipo'
         switch (tipo) {
             case CARRO:
-                return new Veiculo() {
-                    // Implementação dos métodos da interface Veiculo para o Carro
-                    @Override
-                    public String getPlaca() {
-                        return placa;  // Retorna a placa do veículo
-                    }
-
-                    @Override
-                    public String getMarca() {
-                        return marca;  // Retorna a marca do veículo
-                    }
-
-                    @Override
-                    public String getModelo() {
-                        return modelo;  // Retorna o modelo do veículo
-                    }
-
-                    @Override
-                    public int getAno() {
-                        return ano;  // Retorna o ano de fabricação do veículo
-                    }
-
-                    @Override
-                    public Cor getCor() {
-                        return cor;  // Retorna a cor do veículo
-                    }
-
-                    @Override
-                    public String getCombustivel() {
-                        return combustivel;  // Retorna o tipo de combustível do veículo
-                    }
-
-                    @Override
-                    public double calcularValorSeguro() {
-                        // Cálculo do valor do seguro para um carro, com base no ano de fabricação.
-                        int idadeDoCarro = anoAtual - ano;
-                        double valorBase = 1000; // Valor base do seguro para carros.
-                        return valorBase - (idadeDoCarro * 50); // Reduz o valor com base na idade do carro.
-                    }
-                };
+                return criarCarro(placa, marca, modelo, ano, cor, combustivel, anoAtual);
 
             case MOTO:
-                return new Veiculo() {
-                    // Implementação dos métodos da interface Veiculo para a Moto
-                    @Override
-                    public String getPlaca() {
-                        return placa;  // Retorna a placa da moto
-                    }
-
-                    @Override
-                    public String getMarca() {
-                        return marca;  // Retorna a marca da moto
-                    }
-
-                    @Override
-                    public String getModelo() {
-                        return modelo;  // Retorna o modelo da moto
-                    }
-
-                    @Override
-                    public int getAno() {
-                        return ano;  // Retorna o ano de fabricação da moto
-                    }
-
-                    @Override
-                    public Cor getCor() {
-                        return cor;  // Retorna a cor da moto
-                    }
-
-                    @Override
-                    public String getCombustivel() {
-                        return combustivel;  // Retorna o tipo de combustível da moto
-                    }
-
-                    @Override
-                    public double calcularValorSeguro() {
-                        // Cálculo do valor do seguro para uma moto.
-                        int idadeDaMoto = anoAtual - ano;
-                        double valorBase = 600; // Valor base do seguro para motos.
-                        return valorBase - (idadeDaMoto * 30); // Reduz o valor com base na idade da moto.
-                    }
-                };
+                return criarMoto(placa, marca, modelo, ano, cor, combustivel, anoAtual);
 
             case CAMINHAO:
-                return new Veiculo() {
-                    // Implementação dos métodos da interface Veiculo para o Caminhão
-                    @Override
-                    public String getPlaca() {
-                        return placa;  // Retorna a placa do caminhão
-                    }
-
-                    @Override
-                    public String getMarca() {
-                        return marca;  // Retorna a marca do caminhão
-                    }
-
-                    @Override
-                    public String getModelo() {
-                        return modelo;  // Retorna o modelo do caminhão
-                    }
-
-                    @Override
-                    public int getAno() {
-                        return ano;  // Retorna o ano de fabricação do caminhão
-                    }
-
-                    @Override
-                    public Cor getCor() {
-                        return cor;  // Retorna a cor do caminhão
-                    }
-
-                    @Override
-                    public String getCombustivel() {
-                        return combustivel;  // Retorna o tipo de combustível do caminhão
-                    }
-
-                    @Override
-                    public double calcularValorSeguro() {
-                        // Cálculo do valor do seguro para um caminhão.
-                        int idadeDoCaminhao = anoAtual - ano;
-                        double valorBase = 1500; // Valor base do seguro para caminhões.
-                        return valorBase - (idadeDoCaminhao * 70); // Reduz o valor com base na idade do caminhão.
-                    }
-                };
+                return criarCaminhao(placa, marca, modelo, ano, cor, combustivel, anoAtual);
 
             case ONIBUS:
-                return new Veiculo() {
-                    // Implementação dos métodos da interface Veiculo para o Ônibus
-                    @Override
-                    public String getPlaca() {
-                        return placa;  // Retorna a placa do ônibus
-                    }
-
-                    @Override
-                    public String getMarca() {
-                        return marca;  // Retorna a marca do ônibus
-                    }
-
-                    @Override
-                    public String getModelo() {
-                        return modelo;  // Retorna o modelo do ônibus
-                    }
-
-                    @Override
-                    public int getAno() {
-                        return ano;  // Retorna o ano de fabricação do ônibus
-                    }
-
-                    @Override
-                    public Cor getCor() {
-                        return cor;  // Retorna a cor do ônibus
-                    }
-
-                    @Override
-                    public String getCombustivel() {
-                        return combustivel;  // Retorna o tipo de combustível do ônibus
-                    }
-
-                    @Override
-                    public double calcularValorSeguro() {
-                        // Cálculo do valor do seguro para um ônibus.
-                        int idadeDoOnibus = anoAtual - ano;
-                        double valorBase = 2000; // Valor base do seguro para ônibus.
-                        return valorBase - (idadeDoOnibus * 100); // Reduz o valor com base na idade do ônibus.
-                    }
-                };
+                return criarOnibus(placa, marca, modelo, ano, cor, combustivel, anoAtual);
 
             default:
-                // Se o tipo de veículo for inválido, lançamos uma exceção.
                 throw new IllegalArgumentException("Tipo de veículo desconhecido: " + tipo);
         }
+    }
+
+    // Métodos privados para cada tipo de veículo, mantendo o código mais organizado e modular
+
+    private static Veiculo criarCarro(String placa, String marca, String modelo, int ano, Cor cor, String combustivel, int anoAtual) {
+        return new Veiculo() {
+            private String veiculoCombustivel = combustivel;
+            private String veiculoMarca = marca;
+            private Cor veiculoCor = cor;
+
+            @Override
+            public String getPlaca() {
+                return placa;
+            }
+
+            @Override
+            public String getMarca() {
+                return veiculoMarca;
+            }
+
+            @Override
+            public void setMarca(String marca) {
+                this.veiculoMarca = marca;
+            }
+
+            @Override
+            public void setModelo(String modelo) {
+
+            }
+
+            @Override
+            public void setAno(int ano) {
+
+            }
+
+            @Override
+            public String getModelo() {
+                return modelo;
+            }
+
+            @Override
+            public int getAno() {
+                return ano;
+            }
+
+            @Override
+            public Cor getCor() {
+                return veiculoCor;
+            }
+
+            @Override
+            public void setCor(Cor cor) {
+                this.veiculoCor = cor;
+            }
+
+            @Override
+            public String getCombustivel() {
+                return veiculoCombustivel;
+            }
+
+            @Override
+            public void setPlaca(String placa) {
+
+            }
+
+            @Override
+            public void setCombustivel(String combustivel) {
+                this.veiculoCombustivel = combustivel;
+            }
+
+            @Override
+            public double calcularValorSeguro() {
+                int idadeDoCarro = anoAtual - ano;
+                double valorBase = 1000;
+                return valorBase - (idadeDoCarro * 50);
+            }
+
+            @Override
+            public String toString() {
+                return "Carro: " + getMarca() + " " + getModelo() + ", Placa: " + getPlaca() +
+                        ", Ano: " + getAno() + ", Cor: " + getCor() + ", Combustível: " + getCombustivel();
+            }
+        };
+    }
+
+    private static Veiculo criarMoto(String placa, String marca, String modelo, int ano, Cor cor, String combustivel, int anoAtual) {
+        return new Veiculo() {
+            private String veiculoCombustivel = combustivel;
+            private String veiculoMarca = marca;
+            private Cor veiculoCor = cor;
+
+            @Override
+            public String getPlaca() {
+                return placa;
+            }
+
+            @Override
+            public String getMarca() {
+                return veiculoMarca;
+            }
+
+            @Override
+            public void setMarca(String marca) {
+                this.veiculoMarca = marca;
+            }
+
+            @Override
+            public void setModelo(String modelo) {
+
+            }
+
+            @Override
+            public void setAno(int ano) {
+
+            }
+
+            @Override
+            public String getModelo() {
+                return modelo;
+            }
+
+            @Override
+            public int getAno() {
+                return ano;
+            }
+
+            @Override
+            public Cor getCor() {
+                return veiculoCor;
+            }
+
+            @Override
+            public void setCor(Cor cor) {
+                this.veiculoCor = cor;
+            }
+
+            @Override
+            public String getCombustivel() {
+                return veiculoCombustivel;
+            }
+
+            @Override
+            public void setPlaca(String placa) {
+
+            }
+
+            @Override
+            public void setCombustivel(String combustivel) {
+                this.veiculoCombustivel = combustivel;
+            }
+
+            @Override
+            public double calcularValorSeguro() {
+                int idadeDaMoto = anoAtual - ano;
+                double valorBase = 600;
+                return valorBase - (idadeDaMoto * 30);
+            }
+
+            @Override
+            public String toString() {
+                return "Moto: " + getMarca() + " " + getModelo() + ", Placa: " + getPlaca() +
+                        ", Ano: " + getAno() + ", Cor: " + getCor() + ", Combustível: " + getCombustivel();
+            }
+        };
+    }
+
+    private static Veiculo criarCaminhao(String placa, String marca, String modelo, int ano, Cor cor, String combustivel, int anoAtual) {
+        return new Veiculo() {
+            private String veiculoCombustivel = combustivel;
+            private String veiculoMarca = marca;
+            private Cor veiculoCor = cor;
+
+            @Override
+            public String getPlaca() {
+                return placa;
+            }
+
+            @Override
+            public String getMarca() {
+                return veiculoMarca;
+            }
+
+            @Override
+            public void setMarca(String marca) {
+                this.veiculoMarca = marca;
+            }
+
+            @Override
+            public void setModelo(String modelo) {
+
+            }
+
+            @Override
+            public void setAno(int ano) {
+
+            }
+
+            @Override
+            public String getModelo() {
+                return modelo;
+            }
+
+            @Override
+            public int getAno() {
+                return ano;
+            }
+
+            @Override
+            public Cor getCor() {
+                return veiculoCor;
+            }
+
+            @Override
+            public void setCor(Cor cor) {
+                this.veiculoCor = cor;
+            }
+
+            @Override
+            public String getCombustivel() {
+                return veiculoCombustivel;
+            }
+
+            @Override
+            public void setPlaca(String placa) {
+
+            }
+
+            @Override
+            public void setCombustivel(String combustivel) {
+                this.veiculoCombustivel = combustivel;
+            }
+
+            @Override
+            public double calcularValorSeguro() {
+                int idadeDoCaminhao = anoAtual - ano;
+                double valorBase = 1500;
+                return valorBase - (idadeDoCaminhao * 70);
+            }
+
+            @Override
+            public String toString() {
+                return "Caminhão: " + getMarca() + " " + getModelo() + ", Placa: " + getPlaca() +
+                        ", Ano: " + getAno() + ", Cor: " + getCor() + ", Combustível: " + getCombustivel();
+            }
+        };
+    }
+
+    private static Veiculo criarOnibus(String placa, String marca, String modelo, int ano, Cor cor, String combustivel, int anoAtual) {
+        return new Veiculo() {
+            private String veiculoCombustivel = combustivel;
+            private String veiculoMarca = marca;
+            private Cor veiculoCor = cor;
+
+            @Override
+            public String getPlaca() {
+                return placa;
+            }
+
+            @Override
+            public String getMarca() {
+                return veiculoMarca;
+            }
+
+            @Override
+            public void setMarca(String marca) {
+                this.veiculoMarca = marca;
+            }
+
+            @Override
+            public void setModelo(String modelo) {
+
+            }
+
+            @Override
+            public void setAno(int ano) {
+
+            }
+
+            @Override
+            public String getModelo() {
+                return modelo;
+            }
+
+            @Override
+            public int getAno() {
+                return ano;
+            }
+
+            @Override
+            public Cor getCor() {
+                return veiculoCor;
+            }
+
+            @Override
+            public void setCor(Cor cor) {
+                this.veiculoCor = cor;
+            }
+
+            @Override
+            public String getCombustivel() {
+                return veiculoCombustivel;
+            }
+
+            @Override
+            public void setPlaca(String placa) {
+
+            }
+
+            @Override
+            public void setCombustivel(String combustivel) {
+                this.veiculoCombustivel = combustivel;
+            }
+
+            @Override
+            public double calcularValorSeguro() {
+                int idadeDoOnibus = anoAtual - ano;
+                double valorBase = 2000;
+                return valorBase - (idadeDoOnibus * 100);
+            }
+
+            @Override
+            public String toString() {
+                return "Ônibus: " + getMarca() + " " + getModelo() + ", Placa: " + getPlaca() +
+                        ", Ano: " + getAno() + ", Cor: " + getCor() + ", Combustível: " + getCombustivel();
+            }
+        };
     }
 }
