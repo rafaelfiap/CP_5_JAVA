@@ -17,7 +17,10 @@ import java.util.List;
 public class ClienteDaoImpl implements ClienteDao {
 
     // Lista para armazenar os clientes em memória
-    private List<Cliente> clientes = new ArrayList<>();
+
+    //List
+
+    private  <Cliente> clientes = new ArrayList<>();
 
     /**
      * Adiciona um novo cliente à lista de clientes.
