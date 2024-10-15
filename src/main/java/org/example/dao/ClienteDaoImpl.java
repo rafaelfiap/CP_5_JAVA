@@ -18,9 +18,9 @@ public class ClienteDaoImpl implements ClienteDao {
 
     // Lista para armazenar os clientes em memória
 
-    //List
 
-    private  <Cliente> clientes = new ArrayList<>();
+
+    private  List<Cliente> clientes = new ArrayList<>();
 
     /**
      * Adiciona um novo cliente à lista de clientes.
