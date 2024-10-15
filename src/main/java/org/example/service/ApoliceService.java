@@ -27,31 +27,11 @@ public class ApoliceService {
     /**
      * Renova a apólice, definindo uma nova data de término.
      *
-     * @param apolice A apólice a ser renovada.
+     * @param apolice         A apólice a ser renovada.
      * @param novaDataTermino A nova data de término da apólice.
      */
     public void renovarApolice(Apolice apolice, LocalDate novaDataTermino) {
         apolice.setDataTermino(novaDataTermino);
     }
 
-    /**
-     * Cancela a apólice, definindo a data de término como a data atual.
-     *
-     * @param apolice A apólice a ser cancelada.
-     */
-    public void cancelarApolice(Apolice apolice) {
-        apolice.setDataTermino(LocalDate.now());
-    }
-
-    /**
-     * Verifica se a apólice é válida com base nas datas de início e término.
-     *
-     * @param apolice A apólice a ser verificada.
-     * @return true se a apólice for válida, false caso contrário.
-     */
-    public boolean verificarValidade(Apolice apolice) {
-        LocalDate hoje = LocalDate.now();
-        return (hoje.isAfter(apolice.getDataInicio()) || hoje.isEqual(apolice.getDataInicio())) &&
-                hoje.isBefore(apolice.getDataTermino());
-    }
 }
