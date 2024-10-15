@@ -24,14 +24,6 @@ public class ApoliceService {
         return valorBase * (1 - desconto);                              // Retorna o valor final com desconto aplicado
     }
 
-    /**
-     * Renova a apólice, definindo uma nova data de término.
-     *
-     * @param apolice         A apólice a ser renovada.
-     * @param novaDataTermino A nova data de término da apólice.
-     */
-    public void renovarApolice(Apolice apolice, LocalDate novaDataTermino) {
-        apolice.setDataTermino(novaDataTermino);
-    }
+
 
 }
