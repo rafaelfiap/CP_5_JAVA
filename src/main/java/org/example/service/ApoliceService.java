@@ -43,15 +43,5 @@ public class ApoliceService {
         apolice.setDataTermino(LocalDate.now());
     }
 
-    /**
-     * Verifica se a apólice é válida com base nas datas de início e término.
-     *
-     * @param apolice A apólice a ser verificada.
-     * @return true se a apólice for válida, false caso contrário.
-     */
-    public boolean verificarValidade(Apolice apolice) {
-        LocalDate hoje = LocalDate.now();
-        return (hoje.isAfter(apolice.getDataInicio()) || hoje.isEqual(apolice.getDataInicio())) &&
-                hoje.isBefore(apolice.getDataTermino());
-    }
+
 }
