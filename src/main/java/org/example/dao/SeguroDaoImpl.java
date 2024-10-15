@@ -30,15 +30,15 @@ public class SeguroDaoImpl implements SeguroDao {
     }
 
     /**
-     * Busca um seguro pelo número da apólice.
+     * Busca um seguro pelo número da apolice.
      *
-     * @param numero O número único da apólice do seguro.
-     * @return O seguro encontrado, ou null se nenhum seguro com o número de apólice especificado for encontrado.
+     * @param numero O número único da apolice do seguro.
+     * @return O seguro encontrado, ou null se nenhum seguro com o número de apolice especificado for encontrado.
      */
     @Override
     public Seguro buscarSeguroPorNumero(String numero) {
         for (Seguro seguro : seguros) {
-            if (seguro.getNumeroApólice().equals(numero)) {
+            if (seguro.getNumeroApolice().equals(numero)) {
                 return seguro;
             }
         }
@@ -63,7 +63,7 @@ public class SeguroDaoImpl implements SeguroDao {
      */
     @Override
     public void atualizarSeguro(Seguro seguro) {
-        Seguro seguroExistente = buscarSeguroPorNumero(seguro.getNumeroApólice());
+        Seguro seguroExistente = buscarSeguroPorNumero(seguro.getNumeroApolice());
         if (seguroExistente != null) {
             seguros.remove(seguroExistente);
             seguros.add(seguro);
@@ -71,9 +71,9 @@ public class SeguroDaoImpl implements SeguroDao {
     }
 
     /**
-     * Remove um seguro da lista pelo número da apólice.
+     * Remove um seguro da lista pelo número da apolice.
      *
-     * @param numero O número da apólice do seguro a ser removido.
+     * @param numero O número da apolice do seguro a ser removido.
      */
     @Override
     public void removerSeguro(String numero) {
