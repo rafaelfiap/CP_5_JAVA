@@ -141,4 +141,5 @@ public class Seguro {
         System.out.println("Seguro para o cliente: " + cliente.getNome() + ", Veículo: " + veiculo.getModelo());
         System.out.println("Valor do seguro: R$ " + valorSeguro + " | Vigência: " + dataInicio + " até " + dataFim);
     }
+
 }
