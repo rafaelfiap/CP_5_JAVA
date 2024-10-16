@@ -149,7 +149,7 @@ public class Endereco {
      * Exibe o endereço completo em formato legível.
      * Exibe o logradouro, número, bairro, cidade, UF e CEP.
      */
-    public void exibirEndereco() {
+    public void exibirDetalhes() {
         System.out.println(logradouro + ", " + numero + " - " + bairro + ", " + cidade + " - " + uf + " | CEP: " + cep);
     }
 }

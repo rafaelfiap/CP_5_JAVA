@@ -49,7 +49,7 @@ public class TesteSinistro {
         Sinistro sinistroBuscado = sinistroService.buscarSinistro("SIN001");
         if (sinistroBuscado != null) {
             System.out.println("Sinistro encontrado: ");
-            sinistroBuscado.exibirDetalhesSinistro();
+            sinistroBuscado.exibirDetalhes();
         } else {
             System.out.println("Sinistro não encontrado.");
         }
@@ -61,7 +61,7 @@ public class TesteSinistro {
         // Testar a listagem de todos os sinistros
         System.out.println("Sinistros registrados:");
         for (Sinistro s : sinistroService.listarTodos()) {
-            s.exibirDetalhesSinistro();
+            s.exibirDetalhes();
         }
     }
 }

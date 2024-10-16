@@ -149,7 +149,7 @@ public class Apolice {
     /**
      * Exibe os detalhes completos da apólice, incluindo cliente, veículo e valor.
      */
-    public void exibirDetalhesApolice() {
+    public void exibirDetalhes() {
         System.out.println("Apólice Número: " + numeroApolice);
         cliente.exibirDetalhes();  // Exibe os detalhes do cliente
         System.out.println("Veículo: " + veiculo.getModelo() + " - " + veiculo.getPlaca());

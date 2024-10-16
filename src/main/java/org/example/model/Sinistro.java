@@ -130,14 +130,14 @@ public class Sinistro {
     /**
      * Exibe os detalhes completos do sinistro, incluindo o cliente, a apólice e o endereço do evento.
      */
-    public void exibirDetalhesSinistro() {
+    public void exibirDetalhes() {
         System.out.println("Sinistro Número: " + numeroSinistro);
         System.out.println("Data do Evento: " + dataEvento);
         System.out.println("Cliente Envolvido: " + cliente.getNome() + " | CPF: " + cliente.getCpf());
         System.out.println("Detalhes da Apólice: ");
-        apolice.exibirDetalhesApolice();  // Exibe os detalhes da apólice associada
+        apolice.exibirDetalhes();  // Exibe os detalhes da apólice associada
         System.out.println("Endereço do Sinistro: ");
-        endereco.exibirEndereco();  // Exibe os detalhes do endereço do sinistro
+        endereco.exibirDetalhes();  // Exibe os detalhes do endereço do sinistro
     }
 
 }

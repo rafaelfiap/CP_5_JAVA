@@ -11,7 +11,7 @@ import java.time.LocalDate;
  * bem como fornecer métodos para acessar e modificar esses dados.
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1
  */
 public class Seguro {
     private String numeroSeguro;  // Número único do seguro
@@ -156,7 +156,7 @@ public class Seguro {
      * do veículo, além das datas de início e término do seguro. Ele é utilizado para apresentar uma
      * visão geral do seguro atual.
      */
-    public void exibirDetalhesSeguro() {
+    public void exibirDetalhes() {
         System.out.println("Seguro Número: " + numeroSeguro);
         cliente.exibirDetalhes();  // Exibe os detalhes do cliente associado
         System.out.println("Veículo: " + veiculo.getModelo() + " - " + veiculo.getPlaca());

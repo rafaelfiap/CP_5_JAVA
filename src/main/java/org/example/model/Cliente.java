@@ -173,7 +173,7 @@ public class Cliente {
      */
     public void exibirDetalhes() {
         System.out.println("Cliente: " + nome + " | CPF: " + cpf + " | Sexo: " + sexo);
-        endereco.exibirEndereco();
+        endereco.exibirDetalhes();
         System.out.println("Telefone: " + telefone + " | Email: " + email);
     }
 
