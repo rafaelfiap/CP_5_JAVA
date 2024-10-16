@@ -1,53 +1,50 @@
 package org.example.dao;
 
+import org.example.dao.ClienteDao;
 import org.example.model.Cliente;
-import java.util.List;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Interface ClienteDao que define os métodos de acesso a dados para a entidade Cliente.
- * Contém métodos para adicionar, buscar, listar, atualizar e remover clientes.
- *
- * Esta interface é responsável por isolar a camada de persistência da camada de lógica de negócios,
- * fornecendo uma API clara para as operações de CRUD (Create, Read, Update, Delete).
+ * Implementação da interface ClienteDao.
+ * Utiliza um HashMap para armazenar os clientes simulando a persistência de dados.
  *
  * @since 1.0
  * @version 1.0
  */
-public interface ClienteDao {
+public class ClienteDaoImpl implements ClienteDao {
 
-    /**
-     * Adiciona um novo cliente à base de dados.
-     *
-     * @param cliente Objeto Cliente a ser adicionado.
-     */
-    void adicionarCliente(Cliente cliente);
+    // Simulação de um banco de dados usando HashMap
+    private Map<String, Cliente> clientes = new HashMap<>();
 
-    /**
-     * Busca um cliente específico pelo CPF.
-     *
-     * @param cpf O CPF do cliente que se deseja buscar.
-     * @return O cliente encontrado, ou null se nenhum cliente com o CPF especificado for encontrado.
-     */
-    Cliente buscarClientePorCpf(String cpf);
+    @Override
+    public void adicionarCliente(Cliente cliente) {
+        clientes.put(cliente.getCpf(), cliente);  // Adiciona o cliente ao HashMap
+    }
 
-    /**
-     * Retorna uma lista com todos os clientes registrados.
-     *
-     * @return Lista de clientes.
-     */
-    List<Cliente> listarClientes();
+    @Override
+    public Cliente buscarClientePorCpf(String cpf) {
+        return clientes.get(cpf);  // Retorna o cliente pelo CPF ou null se não encontrado
+    }
 
-    /**
-     * Atualiza as informações de um cliente existente.
-     *
-     * @param cliente O cliente atualizado com as novas informações.
-     */
-    void atualizarCliente(Cliente cliente);
+    @Override
+    public Map<String, Cliente> listarClientes() {
+        return clientes;  // Retorna o mapa completo de clientes
+    }
 
-    /**
-     * Remove um cliente da base de dados pelo CPF.
-     *
-     * @param cpf O CPF do cliente a ser removido.
-     */
-    void removerCliente(String cpf);
+    @Override
+    public void atualizarCliente(Cliente cliente) {
+        if (clientes.containsKey(cliente.getCpf())) {
+            clientes.put(cliente.getCpf(), cliente);  // Atualiza o cliente no HashMap
+        }
+    }
+
+    @Override
+    public void removerCliente(String cpf) {
+        clientes.remove(cpf);  // Remove o cliente pelo CPF
+    }
 }
+
+
+
