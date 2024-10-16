@@ -4,11 +4,8 @@ import org.example.model.Seguro;
 import java.util.List;
 
 /**
- * Interface SeguroDao que define os métodos de acesso a dados para a entidade Seguro.
- * Contém métodos para adicionar, buscar, listar, atualizar e remover seguros.
- *
- * Esta interface é responsável por encapsular as operações de persistência e oferecer uma API
- * para a lógica de negócios interagir com a camada de dados.
+ * Interface SeguroDao define as operações de persistência para a entidade Seguro.
+ * As operações CRUD (Create, Read, Update, Delete) estão definidas nesta interface.
  *
  * @since 1.0
  * @version 1.0
@@ -16,38 +13,38 @@ import java.util.List;
 public interface SeguroDao {
 
     /**
-     * Adiciona um novo seguro à base de dados.
+     * Adiciona um seguro ao sistema.
      *
-     * @param seguro Objeto Seguro a ser adicionado.
+     * @param seguro O seguro a ser adicionado.
      */
     void adicionarSeguro(Seguro seguro);
 
     /**
-     * Busca um seguro específico pelo número da apólice.
+     * Busca um seguro pelo número do seguro.
      *
-     * @param numero Número único da apólice do seguro.
-     * @return O seguro encontrado, ou null se nenhum seguro com o número de apólice especificado for encontrado.
+     * @param numero O número do seguro a ser buscado.
+     * @return O seguro encontrado ou null se não encontrado.
      */
     Seguro buscarSeguroPorNumero(String numero);
 
     /**
-     * Retorna uma lista com todos os seguros registrados.
+     * Lista todos os seguros cadastrados no sistema.
      *
-     * @return Lista de seguros.
+     * @return Uma lista de todos os seguros cadastrados.
      */
     List<Seguro> listarSeguros();
 
     /**
-     * Atualiza as informações de um seguro existente.
+     * Atualiza um seguro existente no sistema.
      *
-     * @param seguro O seguro atualizado com as novas informações.
+     * @param seguro O seguro com as informações atualizadas.
      */
     void atualizarSeguro(Seguro seguro);
 
     /**
-     * Remove um seguro da base de dados pelo número da apólice.
+     * Remove um seguro do sistema pelo número do seguro.
      *
-     * @param numero O número da apólice do seguro a ser removido.
+     * @param numero O número do seguro a ser removido.
      */
     void removerSeguro(String numero);
 }

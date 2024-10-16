@@ -1,43 +1,68 @@
 package org.example.model;
 
-
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
- * Classe que representa um Seguro no sistema.
- * Um seguro está relacionado a um veículo e um cliente, e contém informações sobre a validade e o valor.
+ * Classe que representa o Seguro de um veículo.
+ * Contém informações sobre o número do seguro, cliente, veículo, valor do seguro,
+ * além das datas de início e término do seguro.
+ *
+ * Esta classe é responsável por armazenar as informações de uma apólice de seguro de veículo,
+ * bem como fornecer métodos para acessar e modificar esses dados.
  *
  * @since 1.0
  * @version 1.0
  */
 public class Seguro {
-    private Cliente cliente;    // Cliente relacionado ao seguro
-    private Veiculo veiculo;    // Veículo coberto pelo seguro
-    private double valorSeguro; // Valor do seguro
-    private Date dataInicio;    // Data de início da vigência do seguro
-    private Date dataFim;       // Data de término da vigência do seguro
+    private String numeroSeguro;  // Número único do seguro
+    private Cliente cliente;      // Cliente que contratou o seguro
+    private Veiculo veiculo;      // Veículo segurado
+    private double valor;         // Valor do seguro
+    private LocalDate dataInicio; // Data de início do seguro
+    private LocalDate dataTermino;// Data de término do seguro
 
     /**
-     * Construtor para inicializar um Seguro.
+     * Construtor para inicializar o seguro com todos os atributos.
      *
-     * @param cliente Cliente relacionado ao seguro
-     * @param veiculo Veículo coberto pelo seguro
-     * @param valorSeguro Valor do seguro
-     * @param dataInicio Data de início da vigência
-     * @param dataFim Data de término da vigência
+     * @param numeroSeguro O número único do seguro.
+     * @param cliente      O cliente que contratou o seguro.
+     * @param veiculo      O veículo segurado.
+     * @param dataInicio   A data de início do seguro.
+     * @param dataTermino  A data de término do seguro.
      */
-    public Seguro(Cliente cliente, Veiculo veiculo, double valorSeguro, Date dataInicio, Date dataFim) {
+    public Seguro(String numeroSeguro, Cliente cliente, Veiculo veiculo, LocalDate dataInicio, LocalDate dataTermino) {
+        this.numeroSeguro = numeroSeguro;
         this.cliente = cliente;
         this.veiculo = veiculo;
-        this.valorSeguro = valorSeguro;
+        this.valor = 0.0;  // Inicializado como 0, será calculado posteriormente
         this.dataInicio = dataInicio;
-        this.dataFim = dataFim;
+        this.dataTermino = dataTermino;
+    }
+
+    // Getters e Setters
+
+    /**
+     * Obtém o número único do seguro.
+     *
+     * @return O número do seguro.
+     */
+    public String getNumeroSeguro() {
+        return numeroSeguro;
+    }
+
+    /**
+     * Define o número do seguro.
+     *
+     * @param numeroSeguro O novo número do seguro.
+     */
+    public void setNumeroSeguro(String numeroSeguro) {
+        this.numeroSeguro = numeroSeguro;
     }
 
     /**
      * Obtém o cliente associado ao seguro.
      *
-     * @return Cliente associado ao seguro.
+     * @return O cliente que contratou o seguro.
      */
     public Cliente getCliente() {
         return cliente;
@@ -46,25 +71,25 @@ public class Seguro {
     /**
      * Define o cliente associado ao seguro.
      *
-     * @param cliente Novo cliente associado ao seguro.
+     * @param cliente O novo cliente associado ao seguro.
      */
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
     /**
-     * Obtém o veículo coberto pelo seguro.
+     * Obtém o veículo segurado.
      *
-     * @return Veículo coberto pelo seguro.
+     * @return O veículo associado ao seguro.
      */
     public Veiculo getVeiculo() {
         return veiculo;
     }
 
     /**
-     * Define o veículo coberto pelo seguro.
+     * Define o veículo associado ao seguro.
      *
-     * @param veiculo Novo veículo coberto pelo seguro.
+     * @param veiculo O novo veículo associado ao seguro.
      */
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
@@ -73,73 +98,69 @@ public class Seguro {
     /**
      * Obtém o valor do seguro.
      *
-     * @return Valor do seguro.
+     * @return O valor do seguro.
      */
-    public double getValorSeguro() {
-        return valorSeguro;
+    public double getValor() {
+        return valor;
     }
 
     /**
      * Define o valor do seguro.
      *
-     * @param valorSeguro Novo valor do seguro.
+     * @param valor O novo valor do seguro.
      */
-    public void setValorSeguro(double valorSeguro) {
-        this.valorSeguro = valorSeguro;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     /**
-     * Obtém a data de início da vigência do seguro.
+     * Obtém a data de início do seguro.
      *
-     * @return Data de início da vigência.
+     * @return A data de início do seguro.
      */
-    public Date getDataInicio() {
+    public LocalDate getDataInicio() {
         return dataInicio;
     }
 
     /**
-     * Define a data de início da vigência do seguro.
+     * Define a data de início do seguro.
      *
-     * @param dataInicio Nova data de início da vigência.
+     * @param dataInicio A nova data de início do seguro.
      */
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
     /**
-     * Obtém a data de término da vigência do seguro.
+     * Obtém a data de término do seguro.
      *
-     * @return Data de término da vigência.
+     * @return A data de término do seguro.
      */
-    public Date getDataFim() {
-        return dataFim;
+    public LocalDate getDataTermino() {
+        return dataTermino;
     }
 
     /**
-     * Define a data de término da vigência do seguro.
+     * Define a data de término do seguro.
      *
-     * @param dataFim Nova data de término da vigência.
+     * @param dataTermino A nova data de término do seguro.
      */
-    public void setDataFim(Date dataFim) {
-        this.dataFim = dataFim;
+    public void setDataTermino(LocalDate dataTermino) {
+        this.dataTermino = dataTermino;
     }
 
     /**
-     * Verifica se o seguro está dentro do prazo de validade.
+     * Exibe os detalhes completos do seguro, incluindo o cliente, veículo e o valor do seguro.
      *
-     * @return true se o seguro ainda é válido, false caso contrário.
+     * Este método imprime as informações do seguro, como o número do seguro, os dados do cliente e
+     * do veículo, além das datas de início e término do seguro. Ele é utilizado para apresentar uma
+     * visão geral do seguro atual.
      */
-    public boolean isSeguroValido() {
-        Date hoje = new Date();
-        return hoje.after(dataInicio) && hoje.before(dataFim);
+    public void exibirDetalhesSeguro() {
+        System.out.println("Seguro Número: " + numeroSeguro);
+        cliente.exibirDetalhes();  // Exibe os detalhes do cliente associado
+        System.out.println("Veículo: " + veiculo.getModelo() + " - " + veiculo.getPlaca());
+        System.out.println("Valor do Seguro: R$" + valor);
+        System.out.println("Válido de " + dataInicio + " até " + dataTermino);
     }
-
-    /**
-     * Exibe os detalhes do seguro.
-     */
-    public void exibirDetalhes() {
-        System.out.println("Seguro para o cliente: " + cliente.getNome() + ", Veículo: " + veiculo.getModelo());
-        System.out.println("Valor do seguro: R$ " + valorSeguro + " | Vigência: " + dataInicio + " até " + dataFim);
-    }
-
 }
