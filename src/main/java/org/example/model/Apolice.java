@@ -147,6 +147,16 @@ public class Apolice {
     }
 
     /**
+     * Verifica se a apólice está válida de acordo com a data atual.
+     *
+     * @return true se a apólice for válida, false caso contrário.
+     */
+    public boolean isValida() {
+        LocalDate hoje = LocalDate.now();
+        return (hoje.isAfter(dataInicio) || hoje.isEqual(dataInicio)) && hoje.isBefore(dataTermino);
+    }
+
+    /**
      * Exibe os detalhes completos da apólice, incluindo cliente, veículo e valor.
      */
     public void exibirDetalhes() {

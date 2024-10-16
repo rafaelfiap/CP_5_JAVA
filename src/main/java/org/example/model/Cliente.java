@@ -1,6 +1,7 @@
 package org.example.model;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 /**
  * Classe que representa um Cliente no sistema de seguros.
@@ -167,6 +168,45 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
+
+    /**
+     * Calcula a idade do cliente com base na data de nascimento.
+     *
+     * @return A idade do cliente em anos.
+     */
+    public int calcularIdade() {
+        if (dataNascimento != null) {
+            return Period.between(dataNascimento, LocalDate.now()).getYears();
+        }
+        return 0;
+    }
+
+    /**
+     * Calcula o desconto baseado na idade do cliente.
+     * Exemplo: clientes com mais de 60 anos recebem 10% de desconto.
+     *
+     * @return O valor percentual de desconto.
+     */
+    public double calcularDesconto() {
+        int idade = calcularIdade();
+        if (idade > 60) {
+            return 0.10;  // 10% de desconto
+        } else if (idade > 30) {
+            return 0.05;  // 5% de desconto
+        }
+        return 0.0;  // Sem desconto
+    }
+
+    /**
+     * Valida o CPF do cliente.
+     * Exemplo simples: validação de tamanho (11 dígitos).
+     *
+     * @return true se o CPF for válido, false caso contrário.
+     */
+    public boolean validarCpf() {
+        return cpf != null && cpf.length() == 11;
+    }
+
     /**
      * Exibe os detalhes do cliente.
      * Inclui informações como nome, CPF, endereço, telefone e email.
@@ -176,7 +216,6 @@ public class Cliente {
         endereco.exibirDetalhes();
         System.out.println("Telefone: " + telefone + " | Email: " + email);
     }
-
 
 }
 
