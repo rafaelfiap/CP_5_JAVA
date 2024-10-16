@@ -49,5 +49,8 @@ public interface ClienteDao {
     void removerCliente(String cpf);
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ff78bc5c801b6c568ddd5d59d08ef6f417712503
