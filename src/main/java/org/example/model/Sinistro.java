@@ -140,6 +140,4 @@ public class Sinistro {
         endereco.exibirEndereco();  // Exibe os detalhes do endereço do sinistro
     }
 
-    public void exibirDetalhes() {
-    }
 }
