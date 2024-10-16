@@ -1,31 +1,33 @@
 package org.example.model;
 
+import java.time.LocalDate;
 
 /**
  * Classe que representa um Cliente no sistema de seguros.
- * O cliente possui informações pessoais como CPF, nome, endereço, telefone, email e sexo.
+ * O cliente possui informações pessoais como CPF, nome, endereço, telefone, email, sexo e data de nascimento.
  * Esta classe inclui métodos para manipular e exibir as informações do cliente.
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1
  */
 public class Cliente {
-    private String cpf;        // CPF do cliente
-    private String nome;       // Nome completo do cliente
-    private Endereco endereco; // Endereço do cliente
-    private String telefone;   // Telefone do cliente (armazenado como String)
-    private String email;      // Email do cliente
-    private char sexo;         // Sexo do cliente (M/F)
+    private String cpf;                 // CPF do cliente
+    private String nome;                // Nome completo do cliente
+    private Endereco endereco;          // Endereço do cliente
+    private String telefone;            // Telefone do cliente (armazenado como String)
+    private String email;               // Email do cliente
+    private char sexo;                  // Sexo do cliente (M/F)
+    private LocalDate dataNascimento;   // Data de nascimento do cliente
 
     /**
      * Construtor para inicializar um Cliente com todos os atributos.
      *
-     * @param cpf CPF do cliente
-     * @param nome Nome completo do cliente
+     * @param cpf      CPF do cliente
+     * @param nome     Nome completo do cliente
      * @param endereco Endereço residencial do cliente
      * @param telefone Telefone de contato do cliente
-     * @param email Email do cliente
-     * @param sexo Sexo do cliente
+     * @param email    Email do cliente
+     * @param sexo     Sexo do cliente
      */
     public Cliente(String cpf, String nome, Endereco endereco, String telefone, String email, char sexo) {
         this.cpf = cpf;
@@ -34,7 +36,10 @@ public class Cliente {
         this.telefone = telefone;
         this.email = email;
         this.sexo = sexo;
+        this.dataNascimento = dataNascimento;
     }
+
+    // Getters e Setters para os atributos da classe Cliente
 
     /**
      * Obtém o CPF do cliente.
@@ -145,6 +150,24 @@ public class Cliente {
     }
 
     /**
+     * Obtém a data de nascimento do cliente.
+     *
+     * @return Data de nascimento do cliente.
+     */
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    /**
+     * Define a data de nascimento do cliente.
+     *
+     * @param dataNascimento Nova data de nascimento do cliente.
+     */
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    /**
      * Exibe os detalhes do cliente.
      * Inclui informações como nome, CPF, endereço, telefone e email.
      */
@@ -153,4 +176,7 @@ public class Cliente {
         endereco.exibirEndereco();
         System.out.println("Telefone: " + telefone + " | Email: " + email);
     }
+
+
 }
+
