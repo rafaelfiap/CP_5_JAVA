@@ -1,81 +1,95 @@
 package org.example.model;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 /**
- * Classe que representa uma Apólice de seguro.
- * Contém os atributos e métodos necessários para a gestão de uma apólice, incluindo o cliente associado,
- * veículo coberto, e datas de vigência.
+ * Classe que representa uma Apólice de Seguro.
+ * A apólice é o contrato entre o cliente e a seguradora que garante a cobertura do veículo.
+ * Contém informações sobre o número da apólice, cliente, veículo, data de início e término, e valor do seguro.
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1
  */
 public class Apolice {
-
-    private String numeroApolice;     // Número único da apólice
-    private double valorApolice;      // Valor total da apólice
-    private LocalDate dataInicio;     // Data de início da apólice
-    private LocalDate dataTermino;    // Data de término da apólice
-    private Cliente cliente;          // Cliente associado à apólice
-    private Veiculo veiculo;          // Veículo coberto pela apólice
+    private String numeroApolice;  // Número único da apólice
+    private Cliente cliente;       // Cliente associado à apólice
+    private Veiculo veiculo;       // Veículo coberto pela apólice
+    private LocalDate dataInicio;  // Data de início da apólice
+    private LocalDate dataTermino; // Data de término da apólice
+    private double valor;          // Valor do seguro da apólice
 
     /**
-     * Construtor da classe Apolice.
-     * Inicializa uma apólice com todas as informações necessárias.
+     * Construtor para inicializar uma Apólice com todos os atributos.
      *
-     * @param numeroApolice Número único da apólice
-     * @param valorApolice  Valor total da apólice
-     * @param dataInicio    Data de início da apólice
-     * @param dataTermino   Data de término da apólice
-     * @param cliente       Cliente associado à apólice
-     * @param veiculo       Veículo coberto pela apólice
+     * @param numeroApolice Número único da apólice.
+     * @param cliente       O cliente que contratou a apólice.
+     * @param veiculo       O veículo coberto pela apólice.
+     * @param dataInicio    A data de início da apólice.
+     * @param dataTermino   A data de término da apólice.
      */
-    public Apolice(String numeroApolice, double valorApolice, LocalDate dataInicio, LocalDate dataTermino, Cliente cliente, Veiculo veiculo) {
+    public Apolice(String numeroApolice, Cliente cliente, Veiculo veiculo, LocalDate dataInicio, LocalDate dataTermino) {
         this.numeroApolice = numeroApolice;
-        this.valorApolice = valorApolice;
-        this.dataInicio = dataInicio;
-        this.dataTermino = dataTermino;
         this.cliente = cliente;
         this.veiculo = veiculo;
+        this.dataInicio = dataInicio;
+        this.dataTermino = dataTermino;
+        this.valor = valor;
     }
 
-    // GETTERS E SETTERS
+    // Getters e Setters
 
     /**
-     * Obtém o número único da apólice.
+     * Obtém o número da apólice.
      *
-     * @return O número da apólice.
+     * @return O número único da apólice.
      */
     public String getNumeroApolice() {
         return numeroApolice;
     }
 
     /**
-     * Define o número único da apólice.
+     * Define o número da apólice.
      *
-     * @param numeroApolice O número da apólice a ser definido.
+     * @param numeroApolice O novo número da apólice.
      */
     public void setNumeroApolice(String numeroApolice) {
         this.numeroApolice = numeroApolice;
     }
 
     /**
-     * Obtém o valor total da apólice.
+     * Obtém o cliente associado à apólice.
      *
-     * @return O valor da apólice.
+     * @return O cliente da apólice.
      */
-    public double getValorApolice() {
-        return valorApolice;
+    public Cliente getCliente() {
+        return cliente;
     }
 
     /**
-     * Define o valor total da apólice.
+     * Define o cliente associado à apólice.
      *
-     * @param valorApolice O valor da apólice a ser definido.
+     * @param cliente O novo cliente associado à apólice.
      */
-    public void setValorApolice(double valorApolice) {
-        this.valorApolice = valorApolice;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    /**
+     * Obtém o veículo coberto pela apólice.
+     *
+     * @return O veículo da apólice.
+     */
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    /**
+     * Define o veículo coberto pela apólice.
+     *
+     * @param veiculo O novo veículo associado à apólice.
+     */
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
     }
 
     /**
@@ -90,7 +104,7 @@ public class Apolice {
     /**
      * Define a data de início da apólice.
      *
-     * @param dataInicio A data de início a ser definida.
+     * @param dataInicio A nova data de início da apólice.
      */
     public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
@@ -108,46 +122,38 @@ public class Apolice {
     /**
      * Define a data de término da apólice.
      *
-     * @param dataTermino A data de término a ser definida.
+     * @param dataTermino A nova data de término da apólice.
      */
     public void setDataTermino(LocalDate dataTermino) {
         this.dataTermino = dataTermino;
     }
 
     /**
-     * Obtém o cliente associado à apólice.
+     * Obtém o valor da apólice.
      *
-     * @return O cliente associado.
+     * @return O valor do seguro associado à apólice.
      */
-    public Cliente getCliente() {
-        return cliente;
+    public double getValor() {
+        return valor;
     }
 
     /**
-     * Define o cliente associado à apólice.
+     * Define o valor da apólice.
      *
-     * @param cliente O cliente a ser definido.
+     * @param valor O novo valor da apólice.
      */
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     /**
-     * Obtém o veículo coberto pela apólice.
-     *
-     * @return O veículo coberto.
+     * Exibe os detalhes completos da apólice, incluindo cliente, veículo e valor.
      */
-    public Veiculo getVeiculo() {
-        return veiculo;
+    public void exibirDetalhesApolice() {
+        System.out.println("Apólice Número: " + numeroApolice);
+        cliente.exibirDetalhes();  // Exibe os detalhes do cliente
+        System.out.println("Veículo: " + veiculo.getModelo() + " - " + veiculo.getPlaca());
+        System.out.println("Valor da Apólice: R$" + valor);
+        System.out.println("Válido de " + dataInicio + " até " + dataTermino);
     }
-
-    /**
-     * Define o veículo coberto pela apólice.
-     *
-     * @param veiculo O veículo a ser definido.
-     */
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-    }
-
 }

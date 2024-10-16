@@ -2,20 +2,19 @@ package org.example.service;
 
 import org.example.dao.SinistroDao;
 import org.example.model.Sinistro;
-
+import java.time.LocalDate;
 import java.util.List;
 
 /**
  * Implementação da interface SinistroService.
- * Fornece a lógica de negócios para gerenciar sinistros, incluindo registro, busca, remoção e listagem.
+ * Fornece a lógica de negócios para gerenciar sinistros, incluindo registro, busca, remoção, atualização e listagem.
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.2
  */
 public class SinistroServiceImpl implements SinistroService {
 
-    // Dependência da camada de persistência, injetada no construtor.
-    private SinistroDao sinistroDao;
+    private final SinistroDao sinistroDao;
 
     /**
      * Construtor da classe SinistroServiceImpl.
@@ -27,44 +26,68 @@ public class SinistroServiceImpl implements SinistroService {
         this.sinistroDao = sinistroDao;
     }
 
-    /**
-     * Registra um novo sinistro no sistema utilizando o DAO para persistência.
-     *
-     * @param sinistro O sinistro a ser registrado.
-     */
     @Override
     public void registrarSinistro(Sinistro sinistro) {
         sinistroDao.adicionarSinistro(sinistro);
     }
 
-    /**
-     * Busca um sinistro pelo número utilizando o DAO para busca.
-     *
-     * @param numero O número do sinistro.
-     * @return O sinistro encontrado, ou null se não for encontrado.
-     */
     @Override
     public Sinistro buscarSinistro(String numero) {
         return sinistroDao.buscarSinistroPorNumero(numero);
     }
 
-    /**
-     * Remove um sinistro do sistema utilizando o DAO para remoção.
-     *
-     * @param numero O número do sinistro a ser removido.
-     */
     @Override
     public void removerSinistro(String numero) {
         sinistroDao.removerSinistro(numero);
     }
 
-    /**
-     * Retorna uma lista com todos os sinistros registrados no sistema.
-     *
-     * @return Lista de sinistros.
-     */
     @Override
     public List<Sinistro> listarTodos() {
         return sinistroDao.listarSinistros();
+    }
+
+    @Override
+    public void atualizarSinistro(Sinistro sinistro) {
+        Sinistro existente = sinistroDao.buscarSinistroPorNumero(sinistro.getNumeroSinistro());
+        if (existente != null) {
+            sinistroDao.atualizarSinistro(sinistro);
+        }
+    }
+
+    @Override
+    public boolean existeSinistro(String numero) {
+        return sinistroDao.buscarSinistroPorNumero(numero) != null;
+    }
+
+    @Override
+    public List<Sinistro> listarSinistrosPorData(LocalDate data) {
+        return sinistroDao.buscarSinistrosPorData(data);
+    }
+
+    /**
+     * Método para calcular a indenização do sinistro.
+     * Aqui podemos aplicar as regras específicas de cálculo.
+     *
+     * @param sinistro O sinistro para o qual o valor de indenização será calculado.
+     * @return O valor da indenização calculado.
+     */
+    @Override
+    public double calcularIndenizacao(Sinistro sinistro) {
+        // Exemplo de cálculo de indenização:
+        // Podemos aplicar lógica de negócio para determinar o valor da indenização.
+        double valorBase = 10000.0; // Valor base de exemplo
+        double fatorRisco = 0.9;   // Exemplo de fator de risco
+        return valorBase * fatorRisco; // Cálculo da indenização
+    }
+
+    /**
+     * Método que calcula o valor total de todas as indenizações pagas.
+     *
+     * @return O valor total de indenizações.
+     */
+    @Override
+    public double calcularTotalIndenizacoes() {
+        List<Sinistro> sinistros = sinistroDao.listarSinistros();
+        return sinistros.stream().mapToDouble(this::calcularIndenizacao).sum();
     }
 }

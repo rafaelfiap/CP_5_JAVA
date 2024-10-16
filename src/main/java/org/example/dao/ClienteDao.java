@@ -6,9 +6,10 @@ import java.util.Map;
 /**
  * Interface que define as operações de persistência para a entidade Cliente.
  * Operações CRUD são definidas para adicionar, buscar, atualizar e remover clientes.
+ * Também define um método para verificar se o cliente tem sinistros.
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1
  */
 public interface ClienteDao {
 
@@ -47,10 +48,12 @@ public interface ClienteDao {
      * @param cpf CPF do cliente a ser removido.
      */
     void removerCliente(String cpf);
+
+    /**
+     * Verifica se o cliente possui algum sinistro associado.
+     *
+     * @param cpf CPF do cliente.
+     * @return true se o cliente tem sinistro, false caso contrário.
+     */
+    boolean verificarSinistros(String cpf);
 }
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> ff78bc5c801b6c568ddd5d59d08ef6f417712503

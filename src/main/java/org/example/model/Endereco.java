@@ -1,30 +1,30 @@
 package org.example.model;
 
-
 /**
- * Classe que representa um Endereço no sistema.
- * O endereço contém informações sobre o logradouro, número, CEP, bairro, cidade e UF (estado).
+ * Classe que representa um Endereço no sistema de seguros.
+ * O endereço contém informações sobre o logradouro, número, CEP, bairro, cidade e UF (Unidade Federativa).
+ * Esta classe será utilizada para armazenar e manipular os dados de endereço em entidades como Cliente e Sinistro.
  *
  * @since 1.0
  * @version 1.0
  */
 public class Endereco {
     private String logradouro;  // Nome da rua ou avenida
-    private int numero;         // Número do local
-    private String cep;         // Código postal
-    private String bairro;      // Nome do bairro
-    private String cidade;      // Nome da cidade
-    private String uf;          // Unidade Federativa (estado)
+    private int numero;         // Número do local (residência ou comercial)
+    private String cep;         // Código postal do local
+    private String bairro;      // Nome do bairro onde o local está situado
+    private String cidade;      // Nome da cidade do local
+    private String uf;          // Unidade Federativa (estado) do local
 
     /**
-     * Construtor para inicializar um Endereço com todos os atributos.
+     * Construtor que inicializa todos os atributos de um Endereço.
      *
-     * @param logradouro Nome da rua ou avenida
-     * @param numero Número do local
-     * @param cep Código postal
-     * @param bairro Nome do bairro
-     * @param cidade Nome da cidade
-     * @param uf Unidade Federativa (estado)
+     * @param logradouro Nome da rua ou avenida.
+     * @param numero Número da residência ou estabelecimento.
+     * @param cep Código postal do local.
+     * @param bairro Nome do bairro onde está situado o local.
+     * @param cidade Nome da cidade onde está localizado o local.
+     * @param uf Unidade Federativa (estado) do local.
      */
     public Endereco(String logradouro, int numero, String cep, String bairro, String cidade, String uf) {
         this.logradouro = logradouro;
@@ -35,10 +35,12 @@ public class Endereco {
         this.uf = uf;
     }
 
+    // GETTERS E SETTERS
+
     /**
      * Obtém o logradouro (nome da rua ou avenida) do endereço.
      *
-     * @return Logradouro do endereço.
+     * @return O logradouro do endereço.
      */
     public String getLogradouro() {
         return logradouro;
@@ -54,16 +56,16 @@ public class Endereco {
     }
 
     /**
-     * Obtém o número do local no endereço.
+     * Obtém o número da residência ou estabelecimento.
      *
-     * @return Número do local.
+     * @return O número do local.
      */
     public int getNumero() {
         return numero;
     }
 
     /**
-     * Define o número do local no endereço.
+     * Define o número da residência ou estabelecimento.
      *
      * @param numero Novo número do local.
      */
@@ -72,16 +74,16 @@ public class Endereco {
     }
 
     /**
-     * Obtém o código postal (CEP) do endereço.
+     * Obtém o CEP (código postal) do endereço.
      *
-     * @return CEP do endereço.
+     * @return O CEP do endereço.
      */
     public String getCep() {
         return cep;
     }
 
     /**
-     * Define o código postal (CEP) do endereço.
+     * Define o CEP (código postal) do endereço.
      *
      * @param cep Novo CEP do endereço.
      */
@@ -92,7 +94,7 @@ public class Endereco {
     /**
      * Obtém o bairro do endereço.
      *
-     * @return Bairro do endereço.
+     * @return O bairro do endereço.
      */
     public String getBairro() {
         return bairro;
@@ -108,16 +110,16 @@ public class Endereco {
     }
 
     /**
-     * Obtém a cidade do endereço.
+     * Obtém a cidade onde o endereço está localizado.
      *
-     * @return Cidade do endereço.
+     * @return A cidade do endereço.
      */
     public String getCidade() {
         return cidade;
     }
 
     /**
-     * Define a cidade do endereço.
+     * Define a cidade onde o endereço está localizado.
      *
      * @param cidade Nova cidade do endereço.
      */
@@ -126,26 +128,26 @@ public class Endereco {
     }
 
     /**
-     * Obtém a Unidade Federativa (UF) do endereço.
+     * Obtém a UF (Unidade Federativa, estado) onde o endereço está localizado.
      *
-     * @return Unidade Federativa do endereço.
+     * @return A UF (estado) do endereço.
      */
     public String getUf() {
         return uf;
     }
 
     /**
-     * Define a Unidade Federativa (UF) do endereço.
+     * Define a UF (Unidade Federativa, estado) onde o endereço está localizado.
      *
-     * @param uf Nova Unidade Federativa do endereço.
+     * @param uf Nova UF (estado) do endereço.
      */
     public void setUf(String uf) {
         this.uf = uf;
     }
 
     /**
-     * Exibe o endereço completo.
-     * Mostra o logradouro, número, bairro, cidade, UF e CEP.
+     * Exibe o endereço completo em formato legível.
+     * Exibe o logradouro, número, bairro, cidade, UF e CEP.
      */
     public void exibirEndereco() {
         System.out.println(logradouro + ", " + numero + " - " + bairro + ", " + cidade + " - " + uf + " | CEP: " + cep);

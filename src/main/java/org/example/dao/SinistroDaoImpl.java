@@ -1,7 +1,7 @@
 package org.example.dao;
 
-import org.example.dao.SinistroDao;
 import org.example.model.Sinistro;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Map;
  * simulando a persistência de dados sem o uso de banco de dados.
  *
  * @since 1.0
- * @version 1.0
+ * @version 1.1
  */
 public class SinistroDaoImpl implements SinistroDao {
 
@@ -52,6 +52,17 @@ public class SinistroDaoImpl implements SinistroDao {
     }
 
     /**
+     * Atualiza um sinistro existente no HashMap.
+     * Se o sinistro não existir, nenhum dado será atualizado.
+     *
+     * @param sinistro O sinistro atualizado a ser persistido.
+     */
+    @Override
+    public void atualizarSinistro(Sinistro sinistro) {
+        sinistros.put(sinistro.getNumeroSinistro(), sinistro);  // Sobrescreve o sinistro existente
+    }
+
+    /**
      * Retorna uma lista com todos os sinistros registrados no HashMap.
      *
      * @return Lista de sinistros.
@@ -59,5 +70,22 @@ public class SinistroDaoImpl implements SinistroDao {
     @Override
     public List<Sinistro> listarSinistros() {
         return new ArrayList<>(sinistros.values());
+    }
+
+    /**
+     * Busca uma lista de sinistros ocorridos em uma data específica.
+     *
+     * @param data A data dos sinistros a serem buscados.
+     * @return Lista de sinistros ocorridos na data fornecida.
+     */
+    @Override
+    public List<Sinistro> buscarSinistrosPorData(LocalDate data) {
+        List<Sinistro> sinistrosNaData = new ArrayList<>();
+        for (Sinistro sinistro : sinistros.values()) {
+            if (sinistro.getDataEvento().isEqual(data)) {
+                sinistrosNaData.add(sinistro);
+            }
+        }
+        return sinistrosNaData;
     }
 }
