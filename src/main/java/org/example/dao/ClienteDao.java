@@ -1,14 +1,11 @@
 package org.example.dao;
 
 import org.example.model.Cliente;
-import java.util.List;
+import java.util.Map;
 
 /**
- * Interface ClienteDao que define os métodos de acesso a dados para a entidade Cliente.
- * Contém métodos para adicionar, buscar, listar, atualizar e remover clientes.
- *
- * Esta interface é responsável por isolar a camada de persistência da camada de lógica de negócios,
- * fornecendo uma API clara para as operações de CRUD (Create, Read, Update, Delete).
+ * Interface que define as operações de persistência para a entidade Cliente.
+ * Operações CRUD são definidas para adicionar, buscar, atualizar e remover clientes.
  *
  * @since 1.0
  * @version 1.0
@@ -16,38 +13,39 @@ import java.util.List;
 public interface ClienteDao {
 
     /**
-     * Adiciona um novo cliente à base de dados.
+     * Adiciona um novo cliente ao sistema.
      *
-     * @param cliente Objeto Cliente a ser adicionado.
+     * @param cliente O cliente a ser adicionado.
      */
     void adicionarCliente(Cliente cliente);
 
     /**
-     * Busca um cliente específico pelo CPF.
+     * Busca um cliente pelo CPF.
      *
-     * @param cpf O CPF do cliente que se deseja buscar.
-     * @return O cliente encontrado, ou null se nenhum cliente com o CPF especificado for encontrado.
+     * @param cpf O CPF do cliente.
+     * @return O cliente correspondente ou null se não encontrado.
      */
     Cliente buscarClientePorCpf(String cpf);
 
     /**
-     * Retorna uma lista com todos os clientes registrados.
+     * Retorna todos os clientes cadastrados no sistema.
      *
-     * @return Lista de clientes.
+     * @return Um mapa contendo todos os clientes, onde a chave é o CPF e o valor é o objeto Cliente.
      */
-    List<Cliente> listarClientes();
+    Map<String, Cliente> listarClientes();
 
     /**
-     * Atualiza as informações de um cliente existente.
+     * Atualiza os dados de um cliente.
      *
-     * @param cliente O cliente atualizado com as novas informações.
+     * @param cliente Cliente com as informações atualizadas.
      */
     void atualizarCliente(Cliente cliente);
 
     /**
-     * Remove um cliente da base de dados pelo CPF.
+     * Remove um cliente pelo CPF.
      *
-     * @param cpf O CPF do cliente a ser removido.
+     * @param cpf CPF do cliente a ser removido.
      */
     void removerCliente(String cpf);
 }
+
