@@ -1,4 +1,4 @@
-package org.example.dao.impl;
+package org.example.dao;
 
 import org.example.dao.SinistroDao;
 import org.example.model.Sinistro;

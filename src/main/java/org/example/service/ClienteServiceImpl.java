@@ -1,4 +1,4 @@
-package org.example.service.impl;
+package org.example.service;
 
 import org.example.dao.ClienteDao;
 import org.example.model.Cliente;
